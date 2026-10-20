@@ -15,24 +15,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Java 17
+      - name: Setup Java 21
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: '21'
 
-      - name: Setup Gradle
+      - name: Setup Gradle 8.12.1
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.8'
+          gradle-version: '8.12.1'
 
-      - name: Build UltraEnchant
+      - name: Build Minecraft Mod
         run: gradle clean build --no-daemon --stacktrace
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
-          name: UltraEnchant-Million-2.0.1
+          name: UltraEnchant-Million-Fixed
           path: |
             build/libs/*.jar
             !build/libs/*-sources.jar
